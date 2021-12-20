@@ -89,6 +89,9 @@ class R34NoNo {
 			'r34nono_redirect_admin_to_homepage_for_logged_in_non_editors' => array(
 				'title' => __('Redirect admin to home page for logged-in non-editors', 'no-nonsense'),
 				'description' => __('Logged-in users with no editing capabilities (e.g. Subscribers) will be redirected to the site home page if they try to access any admin pages, other than their own profile page.', 'no-nonsense'),
+				'options' => array(
+					'prevent_profile_access' => __('Also prevent access to wp-admin profile screen.', 'no-nonsense'),
+				),
 				'hook_type' => 'action',
 				'hook' => 'admin_init',
 				'priority' => 10,

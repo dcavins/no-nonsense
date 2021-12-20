@@ -147,7 +147,13 @@ function r34nono_login_replace_wp_logo_link() {
 function r34nono_redirect_admin_to_homepage_for_logged_in_non_editors() {
 	if (!wp_doing_ajax() && is_admin() && is_user_logged_in() && !current_user_can('edit_posts')) {
 		global $pagenow;
-		if ($pagenow != 'profile.php') { wp_redirect(home_url('/')); exit; }
+		$options = get_option('r34nono_redirect_admin_to_homepage_for_logged_in_non_editors_options');
+		$prevent_profile_access = ! empty( $options['prevent_profile_access'] );
+
+		if ( $prevent_profile_access || $pagenow != 'profile.php' ) {
+			wp_redirect( home_url( '/' ) );
+			exit;
+		}
 	}
 }
 
